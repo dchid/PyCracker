@@ -1,3 +1,5 @@
+# Author: David Chidester 2021
+
 import hashlib
 import json
 from argparse import ArgumentParser
