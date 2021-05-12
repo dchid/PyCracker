@@ -21,10 +21,8 @@ def main():
     parser.add_argument("-r", "--raw", help="Raw Input", required=False)
     parser.add_argument("-w", "--wordlist", help="Word List", required=True)
     parser.add_argument("-o", "--output", help="Output File", required=False)
-    args = parser.parse_args()
-    bruteForce(args)
 
-def bruteForce(args):
+    args = parser.parse_args()
     # args can't be null
     assert (args.algorithm != None), "algorithm hashing must be specified"
     # xor logic with input from file and raw input
@@ -51,6 +49,10 @@ def bruteForce(args):
     # Select wordlist
     wordList = open(args.wordlist, 'r', encoding="utf-8").read().splitlines()
 
+    #crack passwords
+    bruteForce(hashList, wordList, hashSum, args)
+
+def bruteForce(hashList, wordList, hashSum, args):
     # Checking for matching hashes
     res = {}
     matchfound = False
@@ -72,4 +74,5 @@ def bruteForce(args):
         file.write('\n')
         file.close()
     print("done")
+
 main()
