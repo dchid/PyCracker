@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# password and hash lists for testing
+words.txt
+hash.txt
+passwd.txt
+passwds.txt
+password.txt
+passwords.txt
+
+# common password dictionaries
+rockyou.txt
