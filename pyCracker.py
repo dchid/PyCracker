@@ -58,7 +58,8 @@ def bruteForce(hashList, wordList, hashSum, args):
     matchfound = False
     for hash in hashList:
         for word in wordList:
-            if hashSum(word).strip().replace('-','') == hash:
+            word = word.strip().replace('-','')
+            if hashSum(word) == hash:
                 matchfound = True
                 if args.output == None: # No output file. Print output instead
                     print("Match found! {} ---> {}".format(word,hash))
