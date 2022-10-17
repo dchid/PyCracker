@@ -1,3 +1,4 @@
+
 # Author: David Chidester 2021
 
 import hashlib
@@ -56,25 +57,29 @@ def main():
 def bruteForce(hashList, wordList, hashSum, args):
     # Checking for matching hashes
     res = {}
-    matchfound = False
+    # Output to terminal?
+    printMatch = args.output == None
     for hash in hashList:
         for word in wordList:
-            word = word.strip().replace('-','')
             if hashSum(word) == hash:
-                matchfound = True
                 if args.output == None: # No output file. Print output instead
-                    print("Match found! {} ---> {}".format(word,hash))
+                    print(f"Match found! {word} ---> {hash}"
                 res[word] = hash
                 break
     # no matches found
-    if not matchfound:
+    if len(res) < 1:
         print("Sorry, no passwords were cracked")
         return
     if args.output != None: # Output file was specified
-        file = open(args.output, 'w', encoding="utf-8")
+        file = open(args.output, 'w', encoding="UTF-8")
         file.write(json.dumps(res, indent=0))
         file.write('\n')
         file.close()
     print("done")
+
+def checkMatch(hash, plaintxt, hashSum, printMatch):
+    if hashSum(plaintxt) == hash:
+        if printMatch:
+            print(f"Match found! {plaintxt} ---> {hash}")
 
 main()
