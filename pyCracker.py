@@ -63,7 +63,7 @@ def bruteForce(hashList, wordList, hashSum, args):
         for word in wordList:
             if hashSum(word) == hash:
                 if args.output == None: # No output file. Print output instead
-                    print(f"Match found! {word} ---> {hash}"
+                    print(f"Match found! {word} ---> {hash}")
                 res[word] = hash
                 break
     # no matches found
